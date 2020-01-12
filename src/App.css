@@ -1,8 +1,29 @@
-.App {
-  text-align: center;
+:root {
+  --main-text-color: black;
+  --third-text-color: #b4b4b4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.journalContent {
+  margin: auto;
+  width: 60%;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 400;
 }

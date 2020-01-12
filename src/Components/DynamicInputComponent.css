@@ -1,0 +1,31 @@
+.DynamicInputComponent {
+  padding: 16px 0;
+  color: #646464;
+}
+
+#DayInputs {
+  padding: 12px;
+  background: #fcfcfc;
+}
+
+#NightInputs {
+  padding: 12px;
+  background: #f1f1f1;
+}
+
+input {
+  text-align: center;
+  width: 80%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--third-text-color);
+  padding: 2px 5px;
+}
+
+.inputComponent {
+  padding-top: 6px;
+}
+.listNumber {
+  color: var(--third-text-color);
+  font-size: 12px;
+}
