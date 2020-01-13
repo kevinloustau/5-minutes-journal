@@ -1,26 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import uuidv4 from 'uuid/v4'
+import Day from './Components/Day';
+import DayList from './Components/DayList';
 
-import Date from './Components/Date';
-import DynamicInputComponent from './Components/DynamicInputComponent';
+export const DayContext = React.createContext();
 
-function App() {
+export default function App() {
+
+  const [days, setDays] = useState(emptyDays)
+
+  function handleDayAdd() {
+    const newDay = {
+      id: uuidv4(),
+      date: createDate(),
+      gratefull: [''],
+      great: [''],
+      affirmation: '',
+      happened: [''],
+      how: '',
+    }
+    setDays([...days,newDay])
+  }
+
+  function handleDayDelete() {
+    //to do
+  }
+
+  function createDate(){
+    let today = new Date();
+    let date = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
+    return date;
+  }
+
   return (
     <div className="App">
-      <div className="journalContent">
-        <Date />
-        <div id="DayInputs">
-          <DynamicInputComponent title="I am grateful for..." numberOfEl={3} displayNumber={true} />
-          <DynamicInputComponent title="What would make today great?" numberOfEl={3} displayNumber={true} />
-          <DynamicInputComponent title="Daily affirmations, I am..." numberOfEl={1} displayNumber={false} />
-        </div>
-        <div id="NightInputs">
-          <DynamicInputComponent title="3 amazing things that happened today..." numberOfEl={3} displayNumber={true} />
-          <DynamicInputComponent title="How could I have made today even better?" numberOfEl={1} displayNumber={false} />
-        </div>
-      </div>
+      <DayList days={days} handleDayAdd={handleDayAdd} handleDayDelete={handleDayDelete} />
+      <Day />
     </div>
   );
 }
 
-export default App;
+const emptyDays = [
+  {
+    id: uuidv4(),
+    date: '',
+    gratefull:  ['','',''],
+    great: ['','',''],
+    affirmation: '',
+    happened:  ['','',''],
+    how: '',
+  },
+  {
+    id: uuidv4(),
+    date: '',
+    gratefull:  ['','',''],
+    great: ['','',''],
+    affirmation: '',
+    happened:  ['','',''],
+    how: '',
+  }
+]
+

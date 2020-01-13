@@ -11,7 +11,7 @@ export default function DynamicInputComponent(props) {
     inputHMTL.push(
       <p className="inputComponent">
         <span className="listNumber">{listNumber}</span>
-        <input key={i} type="text" name={i} />
+        <input key={i} type="text" name={i} value={props.content} />
       </p>
     );
   }
