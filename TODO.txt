@@ -1,4 +1,4 @@
-[]
+[] pass props day in <Day /> component
 
 
 

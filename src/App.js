@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import './App.css';
 import uuidv4 from 'uuid/v4'
 import DayList from './Components/DayList';
+import Day from './Components/Day';
 
 export const JournalContext = React.createContext();
 const LOCAL_STORAGE_KEY = '5minJournal.days'
@@ -41,7 +42,11 @@ export default function App() {
   }
 
   function handleDayDelete() {}
-  function handleDaySelect() {}
+
+  function handleDaySelect(id) {
+    setSelectedDayId(id);
+  }
+
   function handleDayChange() {} 
 
   function createDate(){
@@ -55,6 +60,7 @@ export default function App() {
       <div className="App">
         <h1>Five minutes journal</h1>
           <DayList days={days} handleDayAdd={handleDayAdd} handleDayDelete={handleDayDelete} />
+          {selectedDayId && <Day content={selectedDay}/>}
       </div>
     </JournalContext.Provider>
   );
