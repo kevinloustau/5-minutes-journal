@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 import uuidv4 from 'uuid/v4'
-import Day from './Components/Day';
 import DayList from './Components/DayList';
 
-export const DayContext = React.createContext();
+export const JournalContext = React.createContext();
+const LOCAL_STORAGE_KEY = '5minJournal.days'
 
 export default function App() {
+  const [days, setDays] = useState(emptyDays);
+  const [selectedDayId, setSelectedDayId] = useState();
+  const selectedDay = days.find(d => d.id === selectedDayId);
 
-  const [days, setDays] = useState(emptyDays)
-  const [day, setDay] = useState(emptyDay)
+  useEffect(() => {
+    const journalJson = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (journalJson != null) {setDays(JSON.parse(journalJson))}
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(days));
+  },[days])
+  
+  const JournalContextValue = {
+    handleDayAdd,
+    handleDayDelete,
+    handleDaySelect,
+    handleDayChange
+  }
 
   function handleDayAdd() {
     const newDay = {
@@ -24,9 +40,9 @@ export default function App() {
     setDays([...days,newDay])
   }
 
-  function handleDayDelete() {
-    //to do
-  }
+  function handleDayDelete() {}
+  function handleDaySelect() {}
+  function handleDayChange() {} 
 
   function createDate(){
     let today = new Date();
@@ -35,42 +51,32 @@ export default function App() {
   }
 
   return (
-    <div className="App">
-      <DayList days={days} handleDayAdd={handleDayAdd} handleDayDelete={handleDayDelete} />
-      <Day content={day} />
-    </div>
+    <JournalContext.Provider value={JournalContextValue}>
+      <div className="App">
+        <h1>Five minutes journal</h1>
+          <DayList days={days} handleDayAdd={handleDayAdd} handleDayDelete={handleDayDelete} />
+      </div>
+    </JournalContext.Provider>
   );
 }
 
 const emptyDays = [
   {
-    id: uuidv4(),
-    date: '',
-    gratefull:  ['','',''],
-    great: ['','',''],
-    affirmation: '',
-    happened:  ['','',''],
-    how: '',
+    id: 1,
+    date: '2020.02.10',
+    gratefull:  ['my friend','sun','be healthy'],
+    great: ['super','cool','holy'],
+    affirmation: 'my affirmation',
+    happened:  ['that',' this',' and this'],
+    how: 'meditate tonight',
   },
   {
-    id: uuidv4(),
-    date: '',
-    gratefull:  ['','',''],
-    great: ['','',''],
-    affirmation: '',
-    happened:  ['','',''],
-    how: '',
-  }
+    id: 2,
+    date: '2020.02.11',
+    gratefull:  ['my friend','sun','be healthy'],
+    great: ['super','cool','holy'],
+    affirmation: 'my affirmation',
+    happened:  ['that',' this',' and this'],
+    how: 'meditate tonight',
+  },
 ]
-
-const emptyDay =
-  {
-    id: uuidv4(),
-    date: '',
-    gratefull:  ['','',''],
-    great: ['','',''],
-    affirmation: '',
-    happened:  ['','',''],
-    how: '',
-  };
-
