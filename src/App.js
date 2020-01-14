@@ -9,6 +9,7 @@ export const DayContext = React.createContext();
 export default function App() {
 
   const [days, setDays] = useState(emptyDays)
+  const [day, setDay] = useState(emptyDay)
 
   function handleDayAdd() {
     const newDay = {
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <div className="App">
       <DayList days={days} handleDayAdd={handleDayAdd} handleDayDelete={handleDayDelete} />
-      <Day />
+      <Day content={day} />
     </div>
   );
 }
@@ -61,4 +62,15 @@ const emptyDays = [
     how: '',
   }
 ]
+
+const emptyDay =
+  {
+    id: uuidv4(),
+    date: '',
+    gratefull:  ['','',''],
+    great: ['','',''],
+    affirmation: '',
+    happened:  ['','',''],
+    how: '',
+  };
 
