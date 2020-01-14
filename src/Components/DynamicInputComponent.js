@@ -3,16 +3,11 @@ import './DynamicInputComponent.css';
 
 export default function DynamicInputComponent(props) {
 
-  const [inputValue, setInputValue] = useState(["","",""])
-  
-  //https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react
+  const [inputValue, setInputValue] = useState({1:"",2:"",3:""})
 
-  function handleInputChange (i,e){
-    let newValue = inputValue;
-    console.log(newValue);
-    newValue[i] = e.target.value;
-
-    setInputValue(newValue);
+  function handleInputChange (e){
+    const newValue = e.target.value;
+    setInputValue({...inputValue,[e.target.name]:newValue});
   }
 
   let inputHMTL = [];
@@ -24,7 +19,7 @@ export default function DynamicInputComponent(props) {
     inputHMTL.push(
       <p key={i} className="inputComponent">
         <span className="listNumber">{listNumber}</span>
-        <input key={i} type="text" name={i} value={inputValue[i]} onChange={(e) => handleInputChange(i,e)} />
+        <input key={i} type="text" name={i} value={inputValue[i]} onChange={handleInputChange} />
       </p>
     );
   }
