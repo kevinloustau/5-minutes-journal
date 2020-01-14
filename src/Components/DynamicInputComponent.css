@@ -22,6 +22,10 @@ input {
   padding: 2px 5px;
 }
 
+input:focus {
+  outline: none;
+}
+
 .inputComponent {
   padding-top: 6px;
 }
