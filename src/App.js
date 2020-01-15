@@ -1,19 +1,19 @@
 import React, { useState, useEffect} from 'react';
 import './App.css';
-import uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4';
 import DayList from './Components/DayList';
 import Day from './Components/Day';
 
 export const JournalContext = React.createContext();
-const LOCAL_STORAGE_KEY = '5minJournal.days'
+const LOCAL_STORAGE_KEY = '5minJournal.days';
 
 export default function App() {
   const [days, setDays] = useState(emptyDays);
   const [selectedDayId, setSelectedDayId] = useState();
-  const selectedDay = days.find(d => d.id === selectedDayId);
+  const selectedDay = days.find(day => day.id === selectedDayId);
 
   useEffect(() => {
-    const journalJson = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const journalJson = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (journalJson != null) {setDays(JSON.parse(journalJson))}
   }, [])
 
@@ -47,7 +47,15 @@ export default function App() {
     setSelectedDayId(id);
   }
 
-  function handleDayChange() {} 
+  function handleDayChange(propertyName,propertyValue) {
+    const newDays = days;
+    newDays[selectedDayId][propertyName] = propertyValue
+    console.log(newDays[selectedDayId][propertyName] = propertyValue);
+
+    setDays(newDays);
+
+
+  } 
 
   function createDate(){
     let today = new Date();
@@ -84,5 +92,5 @@ const emptyDays = [
     affirmation: 'my affirmation is affirmed',
     happened:  ['da',' da',' and da'],
     how: 'meditate tonight',
-  },
+  }
 ]

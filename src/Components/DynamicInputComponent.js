@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import './DynamicInputComponent.css';
+import {JournalContext} from '../App';
 
 export default function DynamicInputComponent(props) {
 
-  const [inputValue, setInputValue] = useState(props.content)
+  const [inputValue, setInputValue] = useState(props.content);
+
+  const {handleDayChange} = React.useContext(JournalContext);
 
   useEffect(() => {
     setInputValue(props.content);
@@ -13,9 +16,8 @@ export default function DynamicInputComponent(props) {
   function handleInputChange (e){
     const newValue = e.target.value;
     setInputValue({...inputValue,[e.target.name]:newValue});
+    handleDayChange(props.name,inputValue);
   }
-
-  
 
   let inputHMTL = [];
   let listNumber = '';
