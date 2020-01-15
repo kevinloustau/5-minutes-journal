@@ -7,16 +7,14 @@ export default function DynamicInputComponent(props) {
   const [inputValue, setInputValue] = useState(props.content);
 
   const {handleDayChange} = React.useContext(JournalContext);
+  handleDayChange(props.name,inputValue);
 
   useEffect(() => {
     setInputValue(props.content);
   }, [props.content])
 
-
   function handleInputChange (e){
-    const newValue = e.target.value;
-    setInputValue({...inputValue,[e.target.name]:newValue});
-    handleDayChange(props.name,inputValue);
+    setInputValue({...inputValue,[e.target.name]:e.target.value});
   }
 
   let inputHMTL = [];
@@ -28,7 +26,7 @@ export default function DynamicInputComponent(props) {
     inputHMTL.push(
       <p key={i} className="inputComponent">
         <span className="listNumber">{listNumber}</span>
-        <input key={i} type="text" name={i} value={inputValue[i]} onChange={handleInputChange} />
+        <input key={i} type="text" name={i} value={inputValue[i]} onChange={e => handleInputChange(e)} />
       </p>
     );
   }
