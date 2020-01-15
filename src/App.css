@@ -9,9 +9,20 @@
 }
 
 .App {
+  text-align: center;
+}
+
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 h2 {
   font-size: 14px;
   font-weight: 400;
+}
+
+#mainTitle{
+  padding: 24px;
 }

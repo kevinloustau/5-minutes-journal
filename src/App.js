@@ -25,6 +25,7 @@ export default function App() {
     handleDayAdd,
     handleDayDelete,
     handleDaySelect,
+    handleDayUnselect,
     handleDayChange
   }
 
@@ -41,15 +42,19 @@ export default function App() {
     setDays([...days,newDay])
   }
 
-  function handleDayDelete() {}
+  function handleDayDelete() { console.log(`TO DO delete func, id${selectedDayId}`)};
 
   function handleDaySelect(id) {
     setSelectedDayId(id);
   }
 
+  function handleDayUnselect(id) {
+    setSelectedDayId(null);
+  }
   function handleDayChange(propertyName,propertyValue) {
-    const newDays = days;
-    newDays[selectedDayId][propertyName] = propertyValue
+    let newDays = days;
+    console.log(selectedDayId);
+    newDays[selectedDayId][propertyName] = propertyValue;
     setDays(newDays);
   } 
 
@@ -62,9 +67,9 @@ export default function App() {
   return (
     <JournalContext.Provider value={JournalContextValue}>
       <div className="App">
-        <h1>Five minutes journal</h1>
-          <DayList days={days} />
-          {selectedDayId && <Day content={selectedDay}/>}
+        <h1 id='mainTitle'>Five minutes journal</h1>
+          {!selectedDayId && <DayList days={days} />}
+          {selectedDayId && <Day content={selectedDay} backToList={handleDayUnselect}/>}
       </div>
     </JournalContext.Provider>
   );
@@ -86,7 +91,16 @@ const emptyDays = [
     gratefull:  ['sun','moon','thy'],
     great: ['I love that','bell','car'],
     affirmation: 'my affirmation is affirmed',
-    happened:  ['da',' da',' and da'],
-    how: 'meditate tonight',
+    happened:  ['a',' a','aaaaa'],
+    how: 'aaaaaaaa',
+  },
+  {
+    id: 3,
+    date: '2020.02.12',
+    gratefull:  ['333','3333','3333'],
+    great: ['33333','33333','33333'],
+    affirmation: '333333',
+    happened:  ['3',' 3','3'],
+    how: '333',
   }
 ]
