@@ -3,7 +3,7 @@ import './DynamicInputComponent.css';
 
 export default function DynamicInputComponent(props) {
 
-  const [inputValue, setInputValue] = useState({1:"",2:"",3:""})
+  const [inputValue, setInputValue] = useState(props.content)
 
   function handleInputChange (e){
     const newValue = e.target.value;

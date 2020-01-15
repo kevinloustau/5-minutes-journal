@@ -1,4 +1,5 @@
 [] pass props day in <Day /> component
+[] add stats in the admin panel, to measure over time, thats one of the best features.
 
 
 

@@ -4,8 +4,9 @@ import './Day.css';
 import DynamicInputComponent from './DynamicInputComponent';
 
 export default function Day(props) {
-  const { date, gratefull, great, affirmation, happened, how } = props;
-  console.log(gratefull);
+  const { date, gratefull, great, affirmation, happened, how } = props.content;
+
+  console.log('Day: ',props);
 
   return (
     <div className="journalContainer">

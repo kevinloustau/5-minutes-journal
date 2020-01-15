@@ -59,7 +59,7 @@ export default function App() {
     <JournalContext.Provider value={JournalContextValue}>
       <div className="App">
         <h1>Five minutes journal</h1>
-          <DayList days={days} handleDayAdd={handleDayAdd} handleDayDelete={handleDayDelete} />
+          <DayList days={days} />
           {selectedDayId && <Day content={selectedDay}/>}
       </div>
     </JournalContext.Provider>
@@ -79,10 +79,10 @@ const emptyDays = [
   {
     id: 2,
     date: '2020.02.11',
-    gratefull:  ['my friend','sun','be healthy'],
-    great: ['super','cool','holy'],
-    affirmation: 'my affirmation',
-    happened:  ['that',' this',' and this'],
+    gratefull:  ['sun','moon','thy'],
+    great: ['I love that','bell','car'],
+    affirmation: 'my affirmation is affirmed',
+    happened:  ['da',' da',' and da'],
     how: 'meditate tonight',
   },
 ]
