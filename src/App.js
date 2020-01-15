@@ -5,7 +5,6 @@ import DayList from './Components/DayList';
 import Day from './Components/Day';
 
 export const JournalContext = React.createContext();
-const LOCAL_STORAGE_KEY = '5minJournal.days';
 
 export default function App() {
   const [days, setDays] = useState(emptyDays);
@@ -13,13 +12,8 @@ export default function App() {
   const selectedDay = days.find(day => day.id === selectedDayId);
 
   useEffect(() => {
-    const journalJson = localStorage.getItem(LOCAL_STORAGE_KEY)
-    if (journalJson != null) {setDays(JSON.parse(journalJson))}
+    //get json from api
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(days));
-  },[days])
   
   const JournalContextValue = {
     handleDayAdd,
@@ -51,10 +45,11 @@ export default function App() {
   function handleDayUnselect(id) {
     setSelectedDayId(null);
   }
+
   function handleDayChange(propertyName,propertyValue) {
     let newDays = days;
-    console.log(selectedDayId);
-    newDays[selectedDayId][propertyName] = propertyValue;
+    let updateDay = newDays.find(d => d.id === selectedDayId)
+    updateDay[propertyName] = propertyValue;
     setDays(newDays);
   } 
 
@@ -69,7 +64,7 @@ export default function App() {
       <div className="App">
         <h1 id='mainTitle'>Five minutes journal</h1>
           {!selectedDayId && <DayList days={days} />}
-          {selectedDayId && <Day content={selectedDay} backToList={handleDayUnselect}/>}
+          {selectedDayId && <Day content={selectedDay} />}
       </div>
     </JournalContext.Provider>
   );
@@ -77,25 +72,25 @@ export default function App() {
 
 const emptyDays = [
   {
-    id: 1,
+    id: 1234,
     date: '2020.02.10',
-    gratefull:  ['my friend','sun','be healthy'],
+    gratefull:  ['1111','1111','111'],
     great: ['super','cool','holy'],
     affirmation: 'my affirmation',
     happened:  ['that',' this',' and this'],
     how: 'meditate tonight',
   },
   {
-    id: 2,
+    id: 2345,
     date: '2020.02.11',
-    gratefull:  ['sun','moon','thy'],
+    gratefull:  ['222','2222','2222'],
     great: ['I love that','bell','car'],
     affirmation: 'my affirmation is affirmed',
     happened:  ['a',' a','aaaaa'],
     how: 'aaaaaaaa',
   },
   {
-    id: 3,
+    id: 3456,
     date: '2020.02.12',
     gratefull:  ['333','3333','3333'],
     great: ['33333','33333','33333'],

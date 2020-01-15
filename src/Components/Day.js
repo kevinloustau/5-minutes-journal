@@ -8,11 +8,10 @@ export default function Day(props) {
 
   const journalContext = React.useContext(JournalContext);
 
-  
   return (
     <div className="journalContainer">
       <div className="journalContent">
-      <button onClick={props.backToList}>back to list</button>
+      <button onClick={journalContext.handleDayUnselect}>back to list</button>
       {content.date}
       <button onClick={journalContext.handleDayDelete}>delete</button>
         <div id="DayInputs">

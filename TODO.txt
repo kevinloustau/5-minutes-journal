@@ -1,4 +1,4 @@
-[] update props when modify
+[] last letter not put in the props, or delete wtf idk
 [] add stats in the admin panel, to measure over time, thats one of the best features.
 
 
