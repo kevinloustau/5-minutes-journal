@@ -8,12 +8,19 @@ export const JournalContext = React.createContext();
 
 export default function App() {
   const [days, setDays] = useState(emptyDays);
+  const [todayDate, setTodayDate] = useState()
   const [selectedDayId, setSelectedDayId] = useState();
   const selectedDay = days.find(day => day.id === selectedDayId);
+  const todayDay = days.find(d => d.date === todayDate);
 
   useEffect(() => {
+
+    createTodayDate();
+    if (todayDay == null) {
+      handleDayAdd();
+    }
     //get json from api
-  }, [])
+  }, [todayDate,todayDay,days,handleDayAdd])
   
   const JournalContextValue = {
     handleDayAdd,
@@ -24,9 +31,10 @@ export default function App() {
   }
 
   function handleDayAdd() {
+    const id = uuidv4();
     const newDay = {
-      id: uuidv4(),
-      date: createDate(),
+      id: id,
+      date: todayDate,
       gratefull: [''],
       great: [''],
       affirmation: '',
@@ -34,6 +42,7 @@ export default function App() {
       how: '',
     }
     setDays([...days,newDay])
+    setSelectedDayId(newDay.id);
   }
 
   function handleDayDelete() { console.log(`TO DO delete func, id${selectedDayId}`)};
@@ -53,11 +62,12 @@ export default function App() {
     setDays(newDays);
   } 
 
-  function createDate(){
+  function createTodayDate(){
     let today = new Date();
     let date = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
-    return date;
+    setTodayDate(date);
   }
+
 
   return (
     <JournalContext.Provider value={JournalContextValue}>
@@ -88,14 +98,5 @@ const emptyDays = [
     affirmation: 'my affirmation is affirmed',
     happened:  ['a',' a','aaaaa'],
     how: 'aaaaaaaa',
-  },
-  {
-    id: 3456,
-    date: '2020.02.12',
-    gratefull:  ['333','3333','3333'],
-    great: ['33333','33333','33333'],
-    affirmation: '333333',
-    happened:  ['3',' 3','3'],
-    how: '333',
   }
 ]

@@ -11,9 +11,9 @@ export default function Day(props) {
   return (
     <div className="journalContainer">
       <div className="journalContent">
-      <button onClick={journalContext.handleDayUnselect}>back to list</button>
+      <button id="back-to-menu" onClick={journalContext.handleDayUnselect}>back to list</button>
       {content.date}
-      <button onClick={journalContext.handleDayDelete}>delete</button>
+      {/* <button onClick={journalContext.handleDayDelete}>delete</button> */}
         <div id="DayInputs">
           <DynamicInputComponent title="I am grateful for..." numberOfEl={3} displayNumber={true} content={content.gratefull} name='gratefull' />
           <DynamicInputComponent title="What would make today great?" numberOfEl={3} displayNumber={true} content={content.great} name='great'/>
