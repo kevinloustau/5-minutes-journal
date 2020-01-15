@@ -50,11 +50,7 @@ export default function App() {
   function handleDayChange(propertyName,propertyValue) {
     const newDays = days;
     newDays[selectedDayId][propertyName] = propertyValue
-    console.log(newDays[selectedDayId][propertyName] = propertyValue);
-
     setDays(newDays);
-
-
   } 
 
   function createDate(){
