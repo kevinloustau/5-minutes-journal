@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './DynamicInputComponent.css';
 
 export default function DynamicInputComponent(props) {
 
   const [inputValue, setInputValue] = useState(props.content)
 
+  useEffect(() => {
+    setInputValue(props.content);
+  }, [props.content])
+
+
   function handleInputChange (e){
     const newValue = e.target.value;
     setInputValue({...inputValue,[e.target.name]:newValue});
   }
+
+  
 
   let inputHMTL = [];
   let listNumber = '';
