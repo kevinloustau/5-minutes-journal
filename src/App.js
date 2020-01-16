@@ -8,19 +8,18 @@ export const JournalContext = React.createContext();
 
 export default function App() {
   const [days, setDays] = useState(emptyDays);
-  const [todayDate, setTodayDate] = useState()
   const [selectedDayId, setSelectedDayId] = useState();
   const selectedDay = days.find(day => day.id === selectedDayId);
-  const todayDay = days.find(d => d.date === todayDate);
-
+  const todayDate =  createTodayDate();
+  const todayDay = days.find(d => d.date === todayDate)
+  
   useEffect(() => {
-
-    createTodayDate();
-    if (todayDay == null) {
+    if (!todayDay) {
+      console.log("t:", todayDay);
       handleDayAdd();
     }
     //get json from api
-  }, [todayDate,todayDay,days,handleDayAdd])
+  }, [todayDay,handleDayAdd])
   
   const JournalContextValue = {
     handleDayAdd,
@@ -35,15 +34,15 @@ export default function App() {
     const newDay = {
       id: id,
       date: todayDate,
-      gratefull: [''],
+      gratefull: ['yo'],
       great: [''],
       affirmation: '',
       happened: [''],
       how: '',
-    }
-    setDays([...days,newDay])
+    };
+    setDays([newDay,...days]);
     setSelectedDayId(newDay.id);
-  }
+  };
 
   function handleDayDelete() { console.log(`TO DO delete func, id${selectedDayId}`)};
 
@@ -65,7 +64,7 @@ export default function App() {
   function createTodayDate(){
     let today = new Date();
     let date = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
-    setTodayDate(date);
+    return (date);
   }
 
 
@@ -80,10 +79,12 @@ export default function App() {
   );
 }
 
+
+//Data to work:
 const emptyDays = [
   {
     id: 1234,
-    date: '2020.02.10',
+    date: '2020.1.11',
     gratefull:  ['1111','1111','111'],
     great: ['super','cool','holy'],
     affirmation: 'my affirmation',
@@ -92,7 +93,7 @@ const emptyDays = [
   },
   {
     id: 2345,
-    date: '2020.02.11',
+    date: '2020.1.10',
     gratefull:  ['222','2222','2222'],
     great: ['I love that','bell','car'],
     affirmation: 'my affirmation is affirmed',
