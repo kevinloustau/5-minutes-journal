@@ -1,16 +1,19 @@
+.journalContent{
+  animation: 0.5s ease-out 0s 1 fadeInOpacity;
+}
+
+@keyframes fadeInOpacity {
+  0%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .DynamicInputComponent {
   padding: 16px 0;
   color: #646464;
-}
-
-#DayInputs {
-  padding: 12px;
-  background: #f5f5f5;
-}
-
-#NightInputs {
-  padding: 12px;
-  background: #dfdfdf;
 }
 
 input {

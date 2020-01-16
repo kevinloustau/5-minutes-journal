@@ -3,8 +3,10 @@ import './App.css';
 import uuidv4 from 'uuid/v4';
 import DayList from './Components/DayList';
 import Day from './Components/Day';
+import Topbar from './Components/Topbar'
 
 export const JournalContext = React.createContext();
+export const ConnectionContext = React.createContext();
 
 export default function App() {
   const [days, setDays] = useState(emptyDays);
@@ -12,10 +14,11 @@ export default function App() {
   const selectedDay = days.find(day => day.id === selectedDayId);
   const todayDate =  createTodayDate();
   const todayDay = days.find(d => d.date === todayDate)
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   
   useEffect(() => {
     if (!todayDay) {
-      console.log("t:", todayDay);
       handleDayAdd();
     }
     //get json from api
@@ -28,7 +31,7 @@ export default function App() {
     handleDayUnselect,
     handleDayChange
   }
-
+  
   function handleDayAdd() {
     const id = uuidv4();
     const newDay = {
@@ -67,13 +70,34 @@ export default function App() {
     return (date);
   }
 
+  // Connection
+
+  const ConnectionContextValue = {
+      handleLogOut,
+      handleLogIn,
+      handleLSignup
+  }
+
+  function handleLogOut(){
+    setIsLoggedIn(false);
+  }
+
+  function handleLogIn(){
+    setIsLoggedIn(true);
+  }
+
+  function handleLSignup(){
+    //display Signup component
+  }
 
   return (
     <JournalContext.Provider value={JournalContextValue}>
       <div className="App">
-        <h1 id='mainTitle' onClick={handleDayUnselect}>Five minutes journal</h1>
-          {!selectedDayId && <DayList days={days} />}
-          {selectedDayId && <Day content={selectedDay} />}
+        <ConnectionContext.Provider value={ConnectionContextValue}>
+          <Topbar isLoggedIn={isLoggedIn} />
+        </ConnectionContext.Provider>
+        {!selectedDayId && <DayList days={days} />}
+        {selectedDayId && <Day content={selectedDay} />}
       </div>
     </JournalContext.Provider>
   );
