@@ -5,12 +5,12 @@
 
 #DayInputs {
   padding: 12px;
-  background: #fcfcfc;
+  background: #f5f5f5;
 }
 
 #NightInputs {
   padding: 12px;
-  background: #f1f1f1;
+  background: #dfdfdf;
 }
 
 input {

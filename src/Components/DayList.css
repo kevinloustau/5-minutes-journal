@@ -1,1 +1,27 @@
+#day-list{
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 
+ul{
+  width: 500px;
+  margin: 0 auto;;
+}
+
+li.day-list{ 
+  list-style-type:none;
+  background-color:var(--fourth-text-color);
+  width: 250px;
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  line-height: 50px;
+  text-align: center;
+}
+
+li.day-list:first-child{
+  background-color: var(--third-text-color);
+}

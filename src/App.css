@@ -1,6 +1,8 @@
 :root {
   --main-text-color: black;
+  --second-text-color: #3a3a3a;
   --third-text-color: #b4b4b4;
+  --fourth-text-color: #E8E8E8;
 }
 
 * {
@@ -10,6 +12,7 @@
 
 .App {
   text-align: center;
+  background-color: white;
 }
 
 

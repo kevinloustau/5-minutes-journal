@@ -71,7 +71,7 @@ export default function App() {
   return (
     <JournalContext.Provider value={JournalContextValue}>
       <div className="App">
-        <h1 id='mainTitle'>Five minutes journal</h1>
+        <h1 id='mainTitle' onClick={handleDayUnselect}>Five minutes journal</h1>
           {!selectedDayId && <DayList days={days} />}
           {selectedDayId && <Day content={selectedDay} />}
       </div>

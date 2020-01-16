@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import './Day.css';
 import DynamicInputComponent from './DynamicInputComponent';
-import { JournalContext } from '../App';
 
 export default function Day(props) {
   const [content, setContent] = useState(props.content);
 
-  const journalContext = React.useContext(JournalContext);
-
   return (
     <div className="journalContainer">
       <div className="journalContent">
-      <button id="back-to-menu" onClick={journalContext.handleDayUnselect}>back to list</button>
       {content.date}
       {/* <button onClick={journalContext.handleDayDelete}>delete</button> */}
         <div id="DayInputs">
