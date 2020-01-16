@@ -34,7 +34,7 @@ export default function App() {
     const newDay = {
       id: id,
       date: todayDate,
-      gratefull: ['yo'],
+      gratefull: [''],
       great: [''],
       affirmation: '',
       happened: [''],
