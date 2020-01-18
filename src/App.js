@@ -37,6 +37,7 @@ export default function App() {
     const newDay = {
       id: id,
       date: todayDate,
+      quote: `"Brilliant things happen in calm minds. Be calm. You're brilliant.Headspace." -@Headspace`,
       gratefull: [''],
       great: [''],
       affirmation: '',
@@ -96,8 +97,8 @@ export default function App() {
         <ConnectionContext.Provider value={ConnectionContextValue}>
           <Topbar isLoggedIn={isLoggedIn} />
         </ConnectionContext.Provider>
-        {!selectedDayId && <DayList days={days} />}
-        {selectedDayId && <Day content={selectedDay} />}
+        {!selectedDayId && isLoggedIn && <DayList days={days} />}
+        {selectedDayId && isLoggedIn && <Day content={selectedDay} />}
       </div>
     </JournalContext.Provider>
   );
@@ -109,6 +110,7 @@ const emptyDays = [
   {
     id: 1234,
     date: '2020.1.11',
+    quote: `"To know yourself is to be confident. To be confident is to fearlessly express your potential." -Andy Puddicombe`,
     gratefull:  ['1111','1111','111'],
     great: ['super','cool','holy'],
     affirmation: 'my affirmation',
@@ -118,6 +120,17 @@ const emptyDays = [
   {
     id: 2345,
     date: '2020.1.10',
+    quote: `"A day thinking about what could happen, should happen, or what might have been is a day missed." -@Headspace`,
+    gratefull:  ['222','2222','2222'],
+    great: ['I love that','bell','car'],
+    affirmation: 'my affirmation is affirmed',
+    happened:  ['a',' a','aaaaa'],
+    how: 'aaaaaaaa',
+  },
+  {
+    id: 2344,
+    date: '2020.1.09',
+    quote: `“Distractions are everywhere. Notice what takes your attention, acknowledge it, and then let it go.” -@Headspace`,
     gratefull:  ['222','2222','2222'],
     great: ['I love that','bell','car'],
     affirmation: 'my affirmation is affirmed',

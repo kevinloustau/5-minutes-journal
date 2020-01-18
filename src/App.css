@@ -2,7 +2,9 @@
   --main-text-color: black;
   --second-text-color: #3a3a3a;
   --third-text-color: #b4b4b4;
-  --fourth-text-color: #E8E8E8;
+  --fourth-text-color: #F2F2F2;
+  
+  --marging-top-content: 80px;
 }
 
 * {
