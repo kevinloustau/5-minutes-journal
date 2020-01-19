@@ -19,7 +19,11 @@
 }
 
 body {
-  font-family: apercu;
+  font-family: 'apercu';
+}
+
+button {
+  font-family: 'apercu';
 }
 
 .App {
@@ -33,8 +37,13 @@ h1 {
 }
 
 h2 {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 200;
 }
 
 button.btn-simple {
