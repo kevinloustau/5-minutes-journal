@@ -4,6 +4,7 @@ import uuidv4 from 'uuid/v4';
 import DayList from './Components/DayList';
 import Day from './Components/Day';
 import Topbar from './Components/Topbar'
+import Signup from './Components/Signup'
 
 export const JournalContext = React.createContext();
 export const ConnectionContext = React.createContext();
@@ -16,7 +17,9 @@ export default function App() {
   const todayDay = days.find(d => d.date === todayDate)
 
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  
+  const [signup, setSignup] = useState(false)
+
+
   useEffect(() => {
     if (!todayDay) {
       handleDayAdd();
@@ -76,7 +79,7 @@ export default function App() {
   const ConnectionContextValue = {
       handleLogOut,
       handleLogIn,
-      handleLSignup
+      handleSignup
   }
 
   function handleLogOut(){
@@ -85,10 +88,11 @@ export default function App() {
 
   function handleLogIn(){
     setIsLoggedIn(true);
+    setSignup(false)
   }
 
-  function handleLSignup(){
-    //display Signup component
+  function handleSignup(){
+    setSignup(true);
   }
 
   return (
@@ -97,6 +101,9 @@ export default function App() {
         <ConnectionContext.Provider value={ConnectionContextValue}>
           <Topbar isLoggedIn={isLoggedIn} />
         </ConnectionContext.Provider>
+      
+        {!isLoggedIn && !signup && <div>Homepage</div> }
+        {signup && <Signup />}
         {!selectedDayId && isLoggedIn && <DayList days={days} />}
         {selectedDayId && isLoggedIn && <Day content={selectedDay} />}
       </div>
