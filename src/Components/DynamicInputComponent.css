@@ -1,9 +1,9 @@
-.journalContent{
+.journalContent {
   animation: 0.5s ease-out 0s 1 fadeInOpacity;
 }
 
 @keyframes fadeInOpacity {
-  0%{
+  0% {
     opacity: 0;
   }
   100% {

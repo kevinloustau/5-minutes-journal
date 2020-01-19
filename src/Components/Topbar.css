@@ -1,10 +1,10 @@
 #topbar {
 }
 
-#top-right{
+#top-right {
   position: absolute;
-  right:20px;
-  top:20px;
+  right: 20px;
+  top: 20px;
 }
 
 button {
@@ -12,14 +12,14 @@ button {
   line-height: 22px;
 }
 
-.btn-text{
-  border:none;
+.btn-text {
+  border: none;
   background: none;
   padding-right: 20px;
 }
 
-#signup{
-  border:none;
+#signup {
+  border: none;
   width: 120px;
   height: 40px;
   background: #404040;
@@ -29,7 +29,7 @@ button {
   line-height: 22px;
 }
 
-#main-title{
+#main-title {
   font-size: 24px;
   padding: 25px;
   font-weight: 200;

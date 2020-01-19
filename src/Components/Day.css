@@ -5,17 +5,17 @@
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
 }
 
-#date{
+#date {
   padding: 30px 0 20px 0;
 }
 
 #day-inputs {
   padding: 0 12px 12px 12px;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 #night-inputs {
   padding: 12px;
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 0 0 8px 8px;
 }
