@@ -1,6 +1,6 @@
 .journalContent {
   margin: auto;
-  width: 500px;
+  width: var(--width-content);
   border-radius: 8px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
 }

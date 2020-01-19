@@ -17,7 +17,7 @@ export default function App() {
   const todayDay = days.find(d => d.date === todayDate)
 
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [signup, setSignup] = useState(false)
+  const [signup, setSignup] = useState(true)
 
   useEffect(() => {
     if (!todayDay) {

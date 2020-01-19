@@ -1,33 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import './Topbar.css'
-import {JournalContext, ConnectionContext} from '../App';
+import { JournalContext, ConnectionContext } from '../App'
 
-export default function Topbar(pros){
-  
-  const connectionContext = useContext(ConnectionContext);
-  const journalContext = useContext(JournalContext);
+export default function Topbar(pros) {
+  const connectionContext = useContext(ConnectionContext)
+  const journalContext = useContext(JournalContext)
 
-  function boutonsDiv(){
-    if (pros.isLoggedIn) { 
+  function boutonsDiv() {
+    if (pros.isLoggedIn) {
       return (
-        <button className='btn-text' onClick={connectionContext.handleLogOut}>Log out</button>
+        <button className="btn-text" onClick={connectionContext.handleLogOut}>
+          Log out
+        </button>
       )
     } else {
       return (
         <>
-          <button  className='btn-text' onClick={connectionContext.handleLogIn}>Log in</button>
-          <button id='signup'>Sign up</button>
+          <button className="btn-text" onClick={connectionContext.handleLogIn}>
+            Log in
+          </button>
+          <button className="btn-simple" onClick={connectionContext.handleSignup}>
+            Sign up
+          </button>
         </>
       )
     }
   }
 
-  return(
-    <div id='topbar'>
-      <h1 id='main-title'onClick={journalContext.handleDayUnselect}>Five minutes journal</h1>
-      <div id='top-right'>
-        {boutonsDiv()}
-      </div>
+  return (
+    <div id="topbar">
+      <h1 id="main-title" onClick={journalContext.handleDayUnselect}>
+        Five minutes journal
+      </h1>
+      <div id="top-right">{boutonsDiv()}</div>
     </div>
   )
 }

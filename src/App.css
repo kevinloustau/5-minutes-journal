@@ -5,6 +5,7 @@
   --fourth-text-color: #f2f2f2;
 
   --marging-top-content: 80px;
+  --width-content: 500px;
 }
 
 * {
@@ -34,4 +35,15 @@ h1 {
 h2 {
   font-size: 14px;
   font-weight: 400;
+}
+
+button.btn-simple {
+  border: none;
+  width: 120px;
+  height: 40px;
+  background: #404040;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  line-height: 22px;
 }

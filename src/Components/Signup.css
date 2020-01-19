@@ -1,4 +1,18 @@
 #signup-form {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: var(--width-content);
+  justify-content: space-between;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
+}
+
+.signup-form-group {
+  width: 80%;
+  margin: auto;
+  text-align: left;
 }
 
 label {
