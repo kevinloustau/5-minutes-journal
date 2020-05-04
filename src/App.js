@@ -12,9 +12,9 @@ export const ConnectionContext = React.createContext()
 export default function App() {
   const [days, setDays] = useState(emptyDays)
   const [selectedDayId, setSelectedDayId] = useState()
-  const selectedDay = days.find(day => day.id === selectedDayId)
+  const selectedDay = days.find((day) => day.id === selectedDayId)
   const todayDate = createTodayDate()
-  const todayDay = days.find(d => d.date === todayDate)
+  const todayDay = days.find((d) => d.date === todayDate)
 
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [signup, setSignup] = useState(false)
@@ -64,7 +64,7 @@ export default function App() {
 
   function handleDayChange(propertyName, propertyValue) {
     let newDays = days
-    let updateDay = newDays.find(d => d.id === selectedDayId)
+    let updateDay = newDays.find((d) => d.id === selectedDayId)
     updateDay[propertyName] = propertyValue
     setDays(newDays)
   }
@@ -116,7 +116,7 @@ export default function App() {
 const emptyDays = [
   {
     id: 1234,
-    date: '2020.1.11',
+    date: '2020.1.01',
     quote: `"To know yourself is to be confident. To be confident is to fearlessly express your potential." -Andy Puddicombe`,
     gratefull: ['1111', '1111', '111'],
     great: ['super', 'cool', 'holy'],
@@ -126,22 +126,22 @@ const emptyDays = [
   },
   {
     id: 2345,
-    date: '2020.1.10',
+    date: '2020.1.02',
     quote: `"A day thinking about what could happen, should happen, or what might have been is a day missed." -@Headspace`,
-    gratefull: ['222', '2222', '2222'],
-    great: ['I love that', 'bell', 'car'],
-    affirmation: 'my affirmation is affirmed',
-    happened: ['a', ' a', 'aaaaa'],
-    how: 'aaaaaaaa',
+    gratefull: ['', '', ''],
+    great: ['', '', ''],
+    affirmation: '',
+    happened: ['', ' ', ''],
+    how: '',
   },
   {
     id: 2344,
-    date: '2020.1.09',
+    date: '2020.1.03',
     quote: `“Distractions are everywhere. Notice what takes your attention, acknowledge it, and then let it go.” -@Headspace`,
-    gratefull: ['222', '2222', '2222'],
-    great: ['I love that', 'bell', 'car'],
-    affirmation: 'my affirmation is affirmed',
-    happened: ['a', ' a', 'aaaaa'],
-    how: 'aaaaaaaa',
+    gratefull: ['', '', ''],
+    great: ['', '', ''],
+    affirmation: '',
+    happened: ['', ' ', ''],
+    how: '',
   },
 ]
